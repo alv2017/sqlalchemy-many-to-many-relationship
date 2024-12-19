@@ -1,5 +1,8 @@
 # SQLAlchemy: Many-to-Many relationship
 
+On this branch the fix that enables FK support for SQLite has been applied.
+That is how our scenarios are looking now.
+
 ### Scenario 1:
 
 1) run app01.py
@@ -44,17 +47,14 @@ python -m app02
 2) Second, it attempts to create the Association, violating Foreign Key constraints (and succeeds!!!)
 3) Finally, we extract the newly created Association from the database
 
-Expectation: Association creation fails due to Foreign Key constraints.
+Expectation: Script execution will fail due to Foreign Key constraint violation.
 
-Actual Result: Association successfully created.
+Actual Result: OK
+```
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) FOREIGN KEY constraint failed
+[SQL: INSERT INTO association_table (parent_id, child_id, extra_data) VALUES (?, ?, ?)]
+[parameters: (1, 1, 'TEST-01')]
 
+```
 
-### Why is that?
-
-SQLite does not enforce FK constraints by default.
-
-https://docs.sqlalchemy.org/en/20/dialects/sqlite.html#foreign-key-support
-
-
-
-
+After we enabled "PRAGMA foreign_keys=ON", both scenarios work as expected.
