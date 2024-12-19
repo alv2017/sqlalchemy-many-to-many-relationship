@@ -56,5 +56,11 @@ SQLite does not enforce FK constraints by default.
 https://docs.sqlalchemy.org/en/20/dialects/sqlite.html#foreign-key-support
 
 
+### How to enable Foreign Key Support in SQLAlchemy applications?
 
+Checkout to the branch enforcing-foreign-key-support-in-sqlite, and see the possible solution.
 
+```
+git checkout enforcing-foreign-key-support-in-sqlite
+
+```
