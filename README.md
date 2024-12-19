@@ -48,3 +48,13 @@ Expectation: Association creation fails due to Foreign Key constraints.
 
 Actual Result: Association successfully created.
 
+
+### Why is that?
+
+SQLite does not enforce FK constraints by default.
+
+https://docs.sqlalchemy.org/en/20/dialects/sqlite.html#foreign-key-support
+
+
+
+
